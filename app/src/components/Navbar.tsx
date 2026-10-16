@@ -151,7 +151,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.8 }}
           className="lg:hidden w-full bg-white/75 backdrop-blur-xl backdrop-saturate-150 border-b border-white/40 shadow-[0_8px_32px_0_rgba(31,38,135,0.12)]"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row justify-between gap-6">

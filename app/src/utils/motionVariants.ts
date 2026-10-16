@@ -36,7 +36,7 @@ export const VIEWPORT_THRESHOLDS = {
 /** Brand text & logo slide in */
 export const brandTextVariants: Variants = {
   hidden: { opacity: 0, x: -16 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: EASE } },
+  visible: { opacity: 1, x: 0, transition: { duration: 1.0, ease: EASE } },
 };
 
 /** Staggered navigation links */
@@ -45,7 +45,7 @@ export const navLinksVariants = (index: number = 0): Variants => ({
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4, delay: 0.08 * index, ease: EASE },
+    transition: { duration: 0.9, delay: 0.08 * index, ease: EASE },
   },
 });
 
@@ -56,7 +56,7 @@ export const ctaButtonVariants: Variants = {
     opacity: 1,
     scale: 1,
     y: 0,
-    transition: { duration: 0.45, delay: 0.2, ease: EASE },
+    transition: { duration: 0.95, delay: 0.2, ease: EASE },
   },
 };
 
@@ -64,7 +64,7 @@ export const ctaButtonVariants: Variants = {
 /** Hero wrapper: cinematic scale-up appear on first paint. */
 export const heroSectionVariants: Variants = {
   hidden: { opacity: 0, scale: 0.92, y: 20 },
-  visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.85, ease: EASE } },
+  visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 1.35, ease: EASE } },
 };
 
 /** 3D anatomical centerpiece showcase frame. */
@@ -74,7 +74,7 @@ export const showcaseFrameVariants: Variants = {
     opacity: 1,
     scale: 1,
     y: 0,
-    transition: { duration: 0.9, delay: 0.3, ease: EASE },
+    transition: { duration: 1.4, delay: 0.3, ease: EASE },
   },
 };
 
@@ -88,14 +88,14 @@ export const scrollCardVariants: Variants = {
     opacity: 1,
     scale: 1,
     y: 0,
-    transition: { duration: 0.6, delay: (index % 4) * 0.08, ease: EASE },
+    transition: { duration: 1.1, delay: (index % 4) * 0.08, ease: EASE },
   }),
 };
 
 /** Persistent header: smooth slide-down entrance on page load. */
 export const navbarVariants: Variants = {
   hidden: { opacity: 0, y: -20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } },
+  visible: { opacity: 1, y: 0, transition: { duration: 1.1, ease: EASE } },
 };
 
 /** Success modal: tactile scale-up pop. */
@@ -112,7 +112,7 @@ export const modalPopVariants: Variants = {
 /** Modal backdrop: quick fade. */
 export const backdropVariants: Variants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.25 } },
+  visible: { opacity: 1, transition: { duration: 0.75 } },
 };
 
 /* ------------------------------------------------------------------ *
@@ -120,13 +120,13 @@ export const backdropVariants: Variants = {
  * ------------------------------------------------------------------ */
 
 /** Soft rise + fade. */
-export const fadeRise = (delay = 0, duration = 0.6): Variants => ({
+export const fadeRise = (delay = 0, duration = 1.1): Variants => ({
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0, transition: { duration, delay, ease: EASE } },
 });
 
 /** Scale-up appear (0.94 -> 1 by default). */
-export const scaleUp = (delay = 0, from = 0.94, duration = 0.7): Variants => ({
+export const scaleUp = (delay = 0, from = 0.94, duration = 1.2): Variants => ({
   hidden: { opacity: 0, scale: from, y: 18 },
   visible: { opacity: 1, scale: 1, y: 0, transition: { duration, delay, ease: EASE } },
 });
@@ -134,7 +134,7 @@ export const scaleUp = (delay = 0, from = 0.94, duration = 0.7): Variants => ({
 /** Slide + scale in from the left or the right. */
 export const slideIn = (from: 'left' | 'right', delay = 0): Variants => ({
   hidden: { opacity: 0, x: from === 'left' ? -40 : 40, scale: 0.95 },
-  visible: { opacity: 1, x: 0, scale: 1, transition: { duration: 0.7, delay, ease: EASE } },
+  visible: { opacity: 1, x: 0, scale: 1, transition: { duration: 1.2, delay, ease: EASE } },
 });
 
 /** Springy pop — used for certification pills and CTA clusters. */
