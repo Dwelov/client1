@@ -57,6 +57,17 @@
   animation: glowPulse 7s ease-in-out infinite;
 }
 
+/* Ambient loops are decorative — switch them off for reduced-motion users.
+   (Framer Motion entrance animations are handled by <MotionConfig reducedMotion="user">.) */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-float-delayed,
+  .animate-glow,
+  .animate-ping {
+    animation: none !important;
+  }
+}
+
 /* Material Symbols styling */
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined';

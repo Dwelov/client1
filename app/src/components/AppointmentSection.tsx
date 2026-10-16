@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import {
   AppointmentInput,
   validateAppointmentForm,
 } from '../utils/clinicLogic';
 import { DR_HASHAAM_INFO, CLINIC_LOCATION_INFO } from '../data/clinicData';
+import { slideIn, scaleUp, hoverLift, tapPress, viewportOnce } from '../utils/motionVariants';
 
 interface AppointmentSectionProps {
   initialSymptom?: string;
@@ -74,7 +76,13 @@ export const AppointmentSection: React.FC<AppointmentSectionProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Left Column: Heading, Hospital Details & Timings */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            variants={slideIn('left', 0.1)}
+            className="lg:col-span-5 flex flex-col justify-between space-y-6"
+          >
             <div>
               <h2 className="text-4xl sm:text-5xl font-extrabold text-[#041945] tracking-tight mb-4">
                 Let's Get in<br />Touch With Us
@@ -130,10 +138,16 @@ export const AppointmentSection: React.FC<AppointmentSectionProps> = ({
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Interactive Consultation Booking Form */}
-          <div className="lg:col-span-7 bg-white/95 rounded-3xl p-6 sm:p-10 shadow-2xl border border-blue-100 flex flex-col justify-between">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            variants={scaleUp(0.2, 0.94)}
+            className="lg:col-span-7 bg-white/95 rounded-3xl p-6 sm:p-10 shadow-2xl border border-blue-100 flex flex-col justify-between"
+          >
             <form onSubmit={handleSubmit} className="space-y-5" noValidate>
               {/* Name & Email Inputs */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -265,10 +279,12 @@ export const AppointmentSection: React.FC<AppointmentSectionProps> = ({
               </div>
 
               {/* Submit Button */}
-              <button
+              <motion.button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-4 rounded-full bg-gradient-to-r from-blue-600 via-[#0050cb] to-[#00b4d8] text-white font-bold text-base shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/45 hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+                whileHover={hoverLift}
+                whileTap={tapPress}
+                className="w-full py-4 rounded-full bg-gradient-to-r from-blue-600 via-[#0050cb] to-[#00b4d8] text-white font-bold text-base shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/45 transition-[box-shadow] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
               >
                 {isSubmitting ? (
                   <span>Processing Request...</span>
@@ -278,14 +294,14 @@ export const AppointmentSection: React.FC<AppointmentSectionProps> = ({
                     <span className="material-symbols-outlined text-[20px]">send</span>
                   </>
                 )}
-              </button>
+              </motion.button>
 
               <div className="flex items-center justify-center gap-2 text-xs text-slate-500 pt-2 text-center">
                 <span className="material-symbols-outlined text-emerald-600 text-[16px] shrink-0">lock</span>
                 <span>Appointments are coordinated directly with Dr. Hashaam at Shabbir Hospital, Daska.</span>
               </div>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

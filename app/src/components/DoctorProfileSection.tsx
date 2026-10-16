@@ -1,5 +1,7 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { DR_HASHAAM_INFO } from '../data/clinicData';
+import { fadeRise, slideIn, scaleUp, viewportOnce } from '../utils/motionVariants';
 
 interface DoctorProfileSectionProps {
   onOpenBooking: (doctorName?: string) => void;
@@ -11,19 +13,31 @@ export const DoctorProfileSection: React.FC<DoctorProfileSectionProps> = ({
   return (
     <section className="py-20 bg-[#f5f9ff]" id="doctor">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          variants={fadeRise(0)}
+          className="text-center max-w-2xl mx-auto mb-16"
+        >
           <h2 className="text-3xl sm:text-4xl font-extrabold text-[#041945] tracking-tight mb-3">
             Lead Consultant Dedicated to Your Recovery
           </h2>
           <p className="text-base text-slate-600">
             Consultant Physiotherapist • Shabbir Hospital, Bank Road, Daska
           </p>
-        </div>
+        </motion.div>
 
         {/* 3-Block Grid matching reference composition */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Left Info Box */}
-          <div className="lg:col-span-4 rounded-3xl p-8 bg-gradient-to-br from-[#0050cb] via-blue-600 to-[#00b4d8] text-white shadow-xl flex flex-col justify-between">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            variants={slideIn('left', 0.1)}
+            className="lg:col-span-4 rounded-3xl p-8 bg-gradient-to-br from-[#0050cb] via-blue-600 to-[#00b4d8] text-white shadow-xl flex flex-col justify-between"
+          >
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-semibold mb-6">
                 <span className="material-symbols-outlined text-[15px]">verified</span>
@@ -49,10 +63,16 @@ export const DoctorProfileSection: React.FC<DoctorProfileSectionProps> = ({
                 <span className="font-bold text-white">Certified</span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Center: Doctor Visual with portrait */}
-          <div className="lg:col-span-4 rounded-3xl overflow-hidden bg-slate-100 relative min-h-[380px] shadow-lg flex items-center justify-center group border border-blue-100">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            variants={scaleUp(0.2, 0.92)}
+            className="lg:col-span-4 rounded-3xl overflow-hidden bg-slate-100 relative min-h-[380px] shadow-lg flex items-center justify-center group border border-blue-100"
+          >
             <img
               alt="Dr. M Hashaam - Consultant Physiotherapist"
               className="w-full h-full object-cover object-top select-none transition-transform duration-500 group-hover:scale-105"
@@ -68,10 +88,16 @@ export const DoctorProfileSection: React.FC<DoctorProfileSectionProps> = ({
                 <span>MAKE APPOINTMENT</span>
               </button>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right: Details Card */}
-          <div className="lg:col-span-4 rounded-3xl p-8 bg-white border border-blue-50 shadow-xl flex flex-col justify-between">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            variants={slideIn('right', 0.25)}
+            className="lg:col-span-4 rounded-3xl p-8 bg-white border border-blue-50 shadow-xl flex flex-col justify-between"
+          >
             <div>
               <h3 className="text-2xl font-extrabold text-[#041945] mb-1">{DR_HASHAAM_INFO.name}</h3>
               <p className="text-xs font-bold text-[#00b4d8] uppercase tracking-wider mb-4">
@@ -100,7 +126,7 @@ export const DoctorProfileSection: React.FC<DoctorProfileSectionProps> = ({
                 Accepting Patients
               </span>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -1,11 +1,19 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { DR_HASHAAM_INFO } from '../data/clinicData';
+import { fadeRise, scrollCardVariants, scaleUp, viewportOnce } from '../utils/motionVariants';
 
 export const TestimonialsSection: React.FC = () => {
   return (
     <section className="py-20 bg-white" id="methods">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          variants={fadeRise(0)}
+          className="text-center max-w-2xl mx-auto mb-16"
+        >
           <span className="text-xs font-bold text-[#00b4d8] uppercase tracking-widest block mb-2">
             Clinical Standards &amp; Care
           </span>
@@ -15,7 +23,7 @@ export const TestimonialsSection: React.FC = () => {
           <p className="text-base text-slate-600">
             Dedicated non-surgical rehabilitation principles focused on your comfort, safety, and rapid return to daily living.
           </p>
-        </div>
+        </motion.div>
 
         {/* 4 Core Pillars Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
@@ -23,22 +31,34 @@ export const TestimonialsSection: React.FC = () => {
             const icons = ['person_check', 'biotech', 'shield_with_heart', 'bolt'];
             const colors = ['bg-blue-50 text-[#0050cb]', 'bg-cyan-50 text-[#00b4d8]', 'bg-emerald-50 text-emerald-600', 'bg-amber-50 text-[#ff7a00]'];
             return (
-              <div
+              <motion.div
                 key={index}
-                className="p-6 rounded-3xl bg-[#f5f9ff] border border-blue-100 hover:shadow-lg transition-all"
+                custom={index}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportOnce}
+                variants={scrollCardVariants}
+                whileHover={{ y: -5, scale: 1.02 }}
+                className="p-6 rounded-3xl bg-[#f5f9ff] border border-blue-100 hover:shadow-lg transition-[box-shadow,border-color]"
               >
                 <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-4 ${colors[index % colors.length]}`}>
                   <span className="material-symbols-outlined text-[26px]">{icons[index % icons.length]}</span>
                 </div>
                 <h4 className="text-base font-bold text-[#041945] mb-2">{item.title}</h4>
                 <p className="text-xs text-slate-600 leading-relaxed">{item.desc}</p>
-              </div>
+              </motion.div>
             );
           })}
         </div>
 
         {/* Highlight Card matching layout */}
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-[#f5f9ff]/70 p-6 sm:p-10 rounded-3xl border border-blue-100 shadow-sm relative">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          variants={scaleUp(0.15, 0.94)}
+          className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-[#f5f9ff]/70 p-6 sm:p-10 rounded-3xl border border-blue-100 shadow-sm relative"
+        >
           {/* Left Visual */}
           <div className="md:col-span-5 relative flex justify-center">
             <div className="relative w-64 h-72 sm:w-72 sm:h-80 rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-slate-100 flex items-center justify-center">
@@ -94,7 +114,7 @@ export const TestimonialsSection: React.FC = () => {
               * Note: Consultation fees and individualized therapy plans are provided upon clinical inquiry at Shabbir Hospital reception or via direct WhatsApp.
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

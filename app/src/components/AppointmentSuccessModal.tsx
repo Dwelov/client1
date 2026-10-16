@@ -1,6 +1,8 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { AppointmentInput, generateWhatsAppBookingUrl } from '../utils/clinicLogic';
 import { DR_HASHAAM_INFO } from '../data/clinicData';
+import { backdropVariants, modalPopVariants } from '../utils/motionVariants';
 
 interface AppointmentSuccessModalProps {
   data: (AppointmentInput & { bookingId: string }) | null;
@@ -16,12 +18,20 @@ export const AppointmentSuccessModal: React.FC<AppointmentSuccessModalProps> = (
   const whatsappUrl = generateWhatsAppBookingUrl(data);
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-      <div 
-        className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-blue-100 overflow-hidden my-8 p-6 sm:p-8 animate-fadeIn text-center"
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={backdropVariants}
+      className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm flex items-center justify-center p-4"
+    >
+      <motion.div 
         role="dialog"
         aria-modal="true"
         aria-labelledby="success-title"
+        initial="hidden"
+        animate="visible"
+        variants={modalPopVariants}
+        className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-blue-100 overflow-hidden my-8 p-6 sm:p-8 text-center"
       >
         {/* Animated Checkmark Circle */}
         <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center mb-4">
@@ -92,7 +102,7 @@ export const AppointmentSuccessModal: React.FC<AppointmentSuccessModalProps> = (
             Close
           </button>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };

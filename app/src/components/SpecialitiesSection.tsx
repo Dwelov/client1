@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { CLINIC_SERVICES, ServiceItem } from '../data/clinicData';
+import { fadeRise, scrollCardVariants, viewportOnce } from '../utils/motionVariants';
 
 interface SpecialitiesSectionProps {
   onSelectService: (serviceId: string) => void;
@@ -29,7 +31,13 @@ export const SpecialitiesSection: React.FC<SpecialitiesSectionProps> = ({
   return (
     <section className="py-20 bg-white" id="services">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          variants={fadeRise(0)}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10"
+        >
           <div className="max-w-2xl">
             <span className="text-xs font-bold text-[#00b4d8] uppercase tracking-widest block mb-2">
               Clinical Services &amp; Conditions
@@ -52,10 +60,16 @@ export const SpecialitiesSection: React.FC<SpecialitiesSectionProps> = ({
               <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Filter Tabs */}
-        <div className="flex flex-wrap gap-2 mb-8 border-b border-slate-100 pb-4">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          variants={fadeRise(0.1)}
+          className="flex flex-wrap gap-2 mb-8 border-b border-slate-100 pb-4"
+        >
           <button
             type="button"
             onClick={() => setFilter('all')}
@@ -100,16 +114,22 @@ export const SpecialitiesSection: React.FC<SpecialitiesSectionProps> = ({
           >
             Therapies &amp; Modalities <span className="font-urdu text-[11px] font-normal opacity-80">(شاک ویو، الیکٹرو تھراپی)</span>
           </button>
-        </div>
+        </motion.div>
 
         {/* Services Grid matching the exact layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredServices.map((item: ServiceItem, index: number) => {
             const isCyan = index % 2 === 1;
             return (
-              <div
+              <motion.div
                 key={item.id}
-                className="group p-7 rounded-3xl bg-[#f5f9ff]/70 border border-blue-100 hover:bg-white hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-1.5 transition-all flex flex-col justify-between"
+                custom={index}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportOnce}
+                variants={scrollCardVariants}
+                whileHover={{ y: -6, scale: 1.01 }}
+                className="group p-7 rounded-3xl bg-[#f5f9ff]/70 border border-blue-100 hover:bg-white hover:shadow-xl hover:shadow-blue-500/10 transition-[background-color,box-shadow,border-color] flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
@@ -153,7 +173,7 @@ export const SpecialitiesSection: React.FC<SpecialitiesSectionProps> = ({
                   <span>View Details &amp; Therapy</span>
                   <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
                 </button>
-              </div>
+              </motion.div>
             );
           })}
         </div>

@@ -4,6 +4,7 @@
  */
 
 import { useState } from 'react';
+import { MotionConfig } from 'framer-motion';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { SpecialitiesSection } from './components/SpecialitiesSection';
@@ -51,6 +52,9 @@ export default function App() {
   };
 
   return (
+    // reducedMotion="user" degrades every transform animation to a plain
+    // opacity fade for visitors with prefers-reduced-motion enabled.
+    <MotionConfig reducedMotion="user">
     <div className="min-h-screen bg-[#f5f9ff] text-[#071638] antialiased flex flex-col selection:bg-[#00b4d8] selection:text-white">
       {/* Top Persistent Header */}
       <Navbar
@@ -109,5 +113,6 @@ export default function App() {
         onClose={() => setSuccessBookingData(null)}
       />
     </div>
+    </MotionConfig>
   );
 }
