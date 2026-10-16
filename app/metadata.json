@@ -1,0 +1,6 @@
+{
+  "name": "Dr. M Hashaam Physiotherapy Clinic - Daska",
+  "description": "Move Better • Feel Better • Live Better. Dr. M Hashaam, Consultant Physiotherapist at Shabbir Hospital, Bank Road, Daska. Certified in Spine Mobilization, Kinesiology Taping & Chest PT.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
