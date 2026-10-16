@@ -25,34 +25,30 @@ export const Navbar: React.FC<NavbarProps> = ({
   const navLinks = [
     { id: 'hero', label: 'Home' },
     { id: 'services', label: 'Services' },
-    { id: 'doctor', label: 'Dr. Hashaam' },
+    { id: 'doctor', label: 'About' },
     { id: 'methods', label: 'Clinical Standards' },
-    { id: 'location', label: 'Hospital Location' },
+    { id: 'location', label: 'Location' },
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-blue-100/70 transition-all">
+    <header className="sticky top-0 z-50 w-full bg-white/70 backdrop-blur-xl backdrop-saturate-150 border-b border-white/40 shadow-[0_8px_32px_0_rgba(31,38,135,0.1)] supports-[backdrop-filter]:bg-white/60 transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-2 lg:gap-4">
         {/* Clinic Brand Logo & Doctor Name */}
-        <a 
-          href="#hero" 
+        <a
+          href="#hero"
           onClick={(e) => { e.preventDefault(); scrollTo('hero'); }}
-          className="flex items-center gap-2 sm:gap-3 focus:outline-none shrink min-w-0"
+          className="flex items-center gap-2 sm:gap-3 focus:outline-none min-w-0 flex-1 sm:flex-none"
         >
-          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-tr from-[#0050cb] to-[#00b4d8] flex items-center justify-center text-white shadow-md shrink-0">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-tr from-[#0050cb] to-[#00b4d8]
+            flex items-center justify-center text-white shadow-md shrink-0">
             <span className="material-symbols-outlined text-[20px] sm:text-[24px]">vital_signs</span>
           </div>
-          <div className="flex flex-col min-w-0">
-            <div className="flex items-center gap-1.5 sm:gap-2">
-              <span className="text-base sm:text-xl font-extrabold tracking-tight text-[#041945] truncate">
-                DR. M HASHAAM
-              </span>
-              <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider px-1.5 sm:px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 hidden md:inline-block">
-                Shabbir Hospital, Daska
-              </span>
-            </div>
-            <span className="text-[10px] sm:text-xs text-slate-500 font-medium truncate hidden xs:inline-block sm:inline-block">
-              Consultant Physiotherapist • Bank Road, Daska
+          <div className="flex flex-col justify-center min-w-0 leading-tight">
+            <span className="text-sm sm:text-lg lg:text-xl font-extrabold tracking-tight text-[#041945] whitespace-nowrap leading-tight">
+              DR. M HASHAAM
+            </span>
+            <span className="text-[10px] sm:text-xs text-slate-500 font-medium whitespace-nowrap leading-tight">
+              Consultant Physiotherapist
             </span>
           </div>
         </a>
@@ -60,7 +56,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Cool Desktop Navbar (Desktop Only: hidden on mobile & tablet) */}
         <nav 
           aria-label="Main Navigation" 
-          className="hidden lg:flex items-center gap-1 xl:gap-1.5 px-3 py-1.5 rounded-full bg-slate-50/90 border border-slate-200/60 shadow-xs"
+          className="hidden lg:flex items-center gap-1 xl:gap-2 !px-3 !py-1 rounded-full bg-white/60 backdrop-blur-xl backdrop-saturate-150 border border-white/50 shadow-[0_8px_32px_0_rgba(31,38,135,0.1)]"
         >
           {navLinks.map((link) => {
             const isActive = activeNav === link.id;
@@ -137,7 +133,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile & Tablet Slide-out Menu Drawer (Only renders when drawerOpen is true on mobile/tablet) */}
       {drawerOpen && (
-        <div className="lg:hidden w-full bg-white/95 backdrop-blur-xl border-b border-blue-100 shadow-xl transition-all">
+        <div className="lg:hidden w-full bg-white/75 backdrop-blur-xl backdrop-saturate-150 border-b border-white/40 shadow-[0_8px_32px_0_rgba(31,38,135,0.12)] transition-all">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row justify-between gap-6">
             {/* Navigation Links */}
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
