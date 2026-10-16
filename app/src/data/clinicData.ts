@@ -1,3 +1,5 @@
+import doctorPortraitImage from '../assets/images/dr_hashaam_portrait_1792133472100.jpg';
+
 export interface ServiceItem {
   id: string;
   icon: string;
@@ -14,7 +16,7 @@ export const DR_HASHAAM_INFO = {
   name: 'Dr. M Hashaam',
   shortName: 'Dr. Hashaam',
   title: 'Consultant Physiotherapist',
-  portraitImage: '/src/assets/images/dr_hashaam_portrait_1792133472100.jpg',
+  portraitImage: doctorPortraitImage,
   tagline: 'Move Better • Feel Better • Live Better',
   taglineUrdu: 'بہتر حرکت • بہتر احساس • بہتر زندگی',
   hospital: 'Shabbir Hospital',
